@@ -1,0 +1,100 @@
+{
+    "isReadOnly": false,
+    "commitMode": "Immediate",
+    "validationMode": "Immediate",
+    "propertyAnnotations": [
+        {
+            "name": "_id",
+            "ignore": true
+        },
+        {
+            "name": "_acl",
+            "ignore": true
+        },
+        {
+            "name": "score",
+            "ignore": true
+        },
+        {
+            "name": "_kmd",
+            "ignore": true
+        },
+        {
+            "name": "name",
+            "displayName": "Name",
+            "editor": "Text",
+            "index": 0,
+            "validators": [
+                {
+                    "name": "NonEmpty"
+                }
+            ]
+        },
+        {
+            "name": "dueDate",
+            "displayName": "DueDate",
+            "editor": "DatePicker",
+            "index": 1,
+            "validators": [
+                {
+                    "name": "NonEmpty"
+                }
+            ]
+        },
+        {
+            "name": "sponsor",
+            "displayName": "Sponsor",
+            "editor": "Picker",
+            "index": 2,
+            "validators": [
+                {
+                    "name": "NonEmpty"
+                }
+            ],
+            "valuesProvider": [
+                "",
+                "Sumit Sarkar",
+                "Dan Wilson",
+                "Tejas Ranade",
+                "Samicheen Khariwal",
+                "Aakash Chauhan"
+            ]
+        },
+        {
+            "name": "status",
+            "displayName": "Status",
+            "editor": "Picker",
+            "index": 3,
+            "validators": [
+                {
+                    "name": "NonEmpty"
+                }
+            ],
+            "valuesProvider": [
+                "",
+                "Done",
+                "Work in Progress",
+                "Planned",
+                "Not Planned"
+            ]
+        },
+        {
+            "name": "budget",
+            "displayName": "Budget",
+            "editor": "Number",
+            "index": 4,
+            "validators": [
+                {
+                    "name": "NonEmpty"
+                }
+            ]
+        },
+        {
+            "name": "description",
+            "displayName": "Description",
+            "editor": "Text",
+            "index": 5,
+            "validators": []
+        }
+    ]
+}

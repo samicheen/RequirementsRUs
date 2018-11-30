@@ -1,0 +1,39 @@
+<GridLayout class="detail-page">
+	<Label verticalAlignment="top" horizontalAlignment="center" fontsize="30" text="Requirements R Us"></Label>
+	<GridLayout rows="auto, 30, auto" class="page-content" verticalAlignment="center" *ngIf="(item | async) as item; else loading">
+		<GridLayout columns="*, *" row="0" orientation="horizontal">
+			<Label fontsize="25" col="0" text="Feature Details"></Label>
+			<Button text="Edit Feature" horizontalAlignment="right" col="1" fontsize="15" (tap)="editFeatureTapped(item._id)" class="btn btn-primary"></Button>
+		</GridLayout>
+		<StackLayout row ="3" class="form">
+			<StackLayout orientation="horizontal">
+				<Label text="Feature Name: "></Label>
+				<Label text="{{ item.name }}"></Label>
+			</StackLayout>
+			<StackLayout orientation="horizontal">
+				<Label text="Due Date: "></Label>
+				<Label text="{{ item.dueDate }}"></Label>
+			</StackLayout>
+			<StackLayout orientation="horizontal">
+				<Label text="Priority: "></Label>
+				<Label text="{{ item.priority }}"></Label>
+			</StackLayout>
+			<StackLayout orientation="horizontal">
+				<Label text="Status: "></Label>
+				<Label text="{{ item.status }}"></Label>
+			</StackLayout>
+			<StackLayout orientation="horizontal">
+				<Label text="Estimated Price: "></Label>
+				<Label text="{{ item.estimatedPrice }}"></Label>
+			</StackLayout>
+			<StackLayout orientation="horizontal">
+				<Label text="Description: "></Label>
+				<Label text="{{ item.description }}"></Label>
+			</StackLayout>
+			<Button text="Show parameters" class="btn btn-primary" (tap)="onButtonTap(item._id)"></Button>
+		</StackLayout>
+	</GridLayout>
+	<ng-template #loading>
+	    <ActivityIndicator [busy]="true"></ActivityIndicator>
+	</ng-template>
+</GridLayout>

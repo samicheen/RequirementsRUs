@@ -1,0 +1,33 @@
+<!-- <ActionBar class="action-bar">
+    <NavigationButton visibility="collapsed"></NavigationButton>
+    <Label class="action-bar-title" text="Projects"></Label>
+</ActionBar> -->
+<GridLayout class="page">
+        <Label verticalAlignment="top" horizontalAlignment="center" fontsize="30" text="Requirements R Us"></Label>
+    <GridLayout rows="auto, 30, auto" class="page-content" verticalAlignment="center">
+            <GridLayout columns="*, *" row="0" orientation="horizontal">
+                <Label fontsize="25" col="0" text="Projects"></Label>
+                <Button text="New Project" horizontalAlignment="right" col="1" fontsize="15" (tap)="addNewProject()" class="btn btn-primary"></Button>
+            </GridLayout>
+            <ScrollView row="2" orientation="vertical">
+                <StackLayout class="page-inner">
+                    <GridLayout columns="*, *, auto, auto" rows="*" class="table table-standings">
+                        <Label text="Name" row="0" col="0" class="th"></Label>
+                        <Label text="Sponsor" row="0" col="1" class="th"></Label>
+                        <Label text="Status" row="0" col="2" class="th"></Label>
+                        <Label text="Score" row="0" col="3" class="th"></Label>
+                    </GridLayout>
+                    <RadListView [items]="projects" backgroundColor="transparent" height="300" (itemTap)="onItemTap($event)">
+                        <ng-template let-item="item" let-i="index">
+                            <GridLayout columns="*, *, auto, auto" rows="*" class="table table-standings">
+                                <Label text="{{item.name}}" row="0" col="0" class="td"></Label>
+                                <Label text="{{item.sponsor}}" row="0" col="1" class="td"></Label>
+                                <Label text="{{item.status}}" row="0" col="2" class="td"></Label>
+                                <Label text="{{item.score}}" row="0" col="3" class="td"></Label>
+                            </GridLayout>
+                        </ng-template>
+                    </RadListView>
+                </StackLayout>
+            </ScrollView>
+    </GridLayout>
+</GridLayout>

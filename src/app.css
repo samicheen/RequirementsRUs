@@ -1,0 +1,88 @@
+/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. For a full list of class names in the theme
+refer to http://docs.nativescript.org/ui/theme.
+*/
+@import '~nativescript-theme-core/css/core.light.css';
+
+/*
+For example, the following CSS rule changes the font size of all UI
+components that have the btn class name.
+*/
+.btn {
+    font-size: 18;
+}
+
+.table {
+    width: 100%;
+    background-color: #fff
+}
+
+.table-standings {
+    border-width: 1 1 0 1;
+    border-color: #e6eef4
+}
+
+.table-standings Label {
+    white-space: nowrap;
+    font-size: 12;
+    color: #5c6265;
+    vertical-align: middle;
+   
+}
+
+.table-standings .th {
+    background-color: #e6eef4
+}
+
+.table-standings .th Label {
+    color: #00476d
+}
+
+.table-standings .th,
+.table-standings .td {
+    padding: 10;
+    border-bottom-width: 1;
+    border-color: #e6eef4;
+    
+}
+
+.table-standings .Z,
+.table-standings .V,
+ {
+    text-align: left;
+    align-self: inherit
+}
+
+.table-standings .team {
+    orientation: horizontal;
+    text-align: left;
+}
+
+/* .detail-page {
+    padding: 20;
+} */
+
+/* .form {
+    padding: 0 16 16;
+} */
+
+.form > StackLayout > Label {
+  margin-top: 16;
+  font-size: 14;
+  color: black;
+  padding: 4 0;
+  padding-left: 20;
+  margin: 0;
+}
+
+.form > StackLayout > Label + Label {
+  color: rgb(134, 131, 131);
+}
+

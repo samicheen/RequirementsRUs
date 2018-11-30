@@ -1,0 +1,14 @@
+<ActionBar title="{{buttonText}} Project">
+</ActionBar>
+<GridLayout>
+	<ng-container *ngIf="item | async as item; else loading">
+	    <StackLayout class="dataform">
+            <RadDataForm #formObject [source]="item" [metadata]="metadata"></RadDataForm>
+            <Button [text]="buttonText" class="btn btn-primary" (tap)="addProject(item)"></Button>
+	    </StackLayout>
+	</ng-container>
+	
+	<ng-template #loading>
+	    <ActivityIndicator [busy]="true"></ActivityIndicator>
+	</ng-template>
+</GridLayout>
