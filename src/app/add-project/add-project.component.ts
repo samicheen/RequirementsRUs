@@ -4,8 +4,6 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { of } from "rxjs";
 import { Kinvey } from 'kinvey-nativescript-sdk';
 
-const metadata = require("./add-project-form.metadata.json");
-
 @Component({
   selector: 'ns-add-project',
   templateUrl: './add-project.component.html',
@@ -16,7 +14,8 @@ export class AddProjectComponent implements OnInit {
   private itemId: string;
   public buttonText: string;
   public item: any;
-  public metadata: any;
+  public sponsorValues: Array<string> = ["", "Sumit Sarkar", "Dan Wilson", "Tejas Ranade", "Samicheen Khariwal", "Aakash Chauhan"];
+  public statusValues: Array<string> = ["", "Done", "Work in Process", "Planned", "Not Planned"];
 
   @ViewChild("formObject") radDataForm: any;
   
@@ -31,11 +30,11 @@ export class AddProjectComponent implements OnInit {
       dueDate: "",
       sponsor: "",
       status: "",
-      budget: 0,
+      budget: "",
       description: "",
       score: 0,
     };
-    this.metadata = metadata;
+
     if (this.itemId) {
       var dataStore = Kinvey.DataStore.collection('projects', Kinvey.DataStoreType.Network);
       this.item = dataStore.findById(this.itemId).toPromise();

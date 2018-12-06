@@ -9,7 +9,7 @@ import { FeatureModule } from "./feature/feature.module";
 import { HomeModule } from "./home/home.module";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { NativeScriptUIDataFormModule } from "nativescript-ui-dataform/angular";
-import { DropDownModule } from "nativescript-drop-down/angular";
+import { PropertyModule } from "./property/property.module";
 
 @NgModule({
     bootstrap: [
@@ -21,9 +21,9 @@ import { DropDownModule } from "nativescript-drop-down/angular";
         AppRoutingModule,
         NativeScriptUIListViewModule,
         NativeScriptUIDataFormModule,
-        DropDownModule,
         HomeModule,
-        FeatureModule
+        FeatureModule,
+        PropertyModule
     ],
     declarations: [
         AppComponent,

@@ -28,7 +28,7 @@ export class FeaturesComponent implements OnInit {
   }
 
   addNewFeature() {
-      this.routerExtensions.navigate(["/add-feature"]);
+      this.routerExtensions.navigate(["/add-feature/add", this.projectId]);
   }
   
   public onItemTap(args: ListViewEventData) {

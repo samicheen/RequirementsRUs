@@ -8,6 +8,7 @@ const routes: Routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
     { path: "home", loadChildren: "~/app/home/home.module#HomeModule" },
     { path: "feature", loadChildren: "~/app/feature/feature.module#FeatureModule" },
+    { path: "property", loadChildren: "~/app/property/property.module#PropertyModule" },
     { path: "login", component: LoginComponent },
     { path: "register", component: RegisterComponent }
 ];

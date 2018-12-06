@@ -8,8 +8,8 @@ import { FeatureDetailsComponent } from "../feature-details/feature-details.comp
 const routes: Routes = [
     // { path: "", redirectTo: "features/:id" },
     { path: "features/:id", component: FeaturesComponent },
-    { path: "add-feature", component: AddFeatureComponent },
-    { path: "add-feature/:id", component: AddFeatureComponent },
+    { path: "add-feature/add/:projectId", component: AddFeatureComponent },
+    { path: "add-feature/edit/:featureId", component: AddFeatureComponent },
     { path: "feature-details/:id", component: FeatureDetailsComponent }
 ];
 

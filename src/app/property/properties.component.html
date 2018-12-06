@@ -1,0 +1,28 @@
+<ActionBar title="Properties">
+</ActionBar>
+<GridLayout>
+	<ng-container>
+        <StackLayout margin="10">
+            <GridLayout columns="120, 70, *" rows="auto">
+                <Label col="0" text="Name"></Label>
+                <Label col="1" text="Weight"></Label>
+                <Label col="2" text="Score"></Label>
+            </GridLayout>
+            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout *ngFor="let item of properties">
+                <GridLayout columns="120, 70, auto, *, *" rows="auto, auto">
+                        <Label col="0" textWrap="true" row="0" rowSpan="2" [text]="item.name" fontSize="16"></Label>
+                        <TextField horizontalAlignment="center" width="30" col="1" row="0" class="input" [(ngModel)]="item.weight" fontSize="16"></TextField>
+                        <Slider col="2" colSpan="3" row="0" value="10" minValue="0" maxValue="10" [(ngModel)]="item.score"></Slider>
+                        <Label col="2" row="1" [text]="item.low" fontSize="12"></Label>
+                        <Label col="4" row="1" [text]="item.high" fontSize="12"></Label>
+                </GridLayout>
+            </StackLayout>
+            <Button text="Save" class="btn btn-primary" (tap)="saveProperties(properties)"></Button>
+        </StackLayout>
+	</ng-container>
+	
+	<ng-template #loading>
+	    <ActivityIndicator [busy]="true"></ActivityIndicator>
+	</ng-template>
+</GridLayout>

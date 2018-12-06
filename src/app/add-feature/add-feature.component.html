@@ -3,31 +3,27 @@
 <GridLayout>
 	<ng-container *ngIf="item | async as item; else loading">
 	    <StackLayout class="dataform">
-            <!-- <RadDataForm #featureFormObject [source]="item">
-				<TKEntityProperty tkDataFormProperty name="name" displayName="Name" 
-                index="0"></TKEntityProperty>
-				<TKEntityProperty tkDataFormProperty name="bandName" displayName="Name of Band"
-					index="1"></TKEntityProperty>
-				<TKEntityProperty tkDataFormProperty name="year" displayName="Release Year"
-					index="2"></TKEntityProperty>
-				<TKEntityProperty tkDataFormProperty name="myRating" displayName="My Rating"
-					index="3"></TKEntityProperty>
-				<TKEntityProperty tkDataFormProperty name="owned" displayName="Do I Own This?"
-					index="4"></TKEntityProperty>
-			</RadDataForm> -->
-			<DropDown #dd
-				  backroundColor="red"
-                  [items]="values"
-                  [(ngModel)]="selectedIndex"
-                  (selectedIndexChanged)="onchange($event)"></DropDown>
+            <RadDataForm #featureFormObject [source]="item">
+				<TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="dueDate" displayName="Due Date" index="1">
+					<TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+				</TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="priority" displayName="Priority" [valuesProvider]="priorityValues" index="2">
+						<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+				</TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="status" displayName="Status" [valuesProvider]="statusValues" index="3">
+						<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+				</TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="estimatedPrice" displayName="Estimated Price" index="4"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="description" displayName="Description" index="5"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="score" hidden="true"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="projectId" hidden="true"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="_kmd" hidden="true" *ngIf="featureId"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="_id" hidden="true" *ngIf="featureId"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="_acl" hidden="true" *ngIf="featureId"></TKEntityProperty>
+			</RadDataForm>
+			<Button text="Add Image" class="btn btn-primary" (tap)="addImage()"></Button>
 			<Button [text]="buttonText" class="btn btn-primary" (tap)="addFeature(item)"></Button>
-			<Label text="Selected Index:"
-               fontSize="18"
-			   verticalAlignment="bottom"></Label>
-			   <Label [text]="selectedIndex"
-               fontSize="18"
-               verticalAlignment="bottom"></Label>
-        <TextField [text]="selectedIndex"></TextField>
 	    </StackLayout>
 	</ng-container>
 	

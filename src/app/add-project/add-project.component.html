@@ -2,8 +2,32 @@
 </ActionBar>
 <GridLayout>
 	<ng-container *ngIf="item | async as item; else loading">
+			<!-- name: "",
+			dueDate: "",
+			sponsor: "",
+			status: "",
+			budget: 0,
+			description: "",
+			score: 0 -->
 	    <StackLayout class="dataform">
-            <RadDataForm #formObject [source]="item" [metadata]="metadata"></RadDataForm>
+			<RadDataForm #formObject [source]="item">
+				<TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="dueDate" displayName="Due Date" index="1">
+					<TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+				</TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="sponsor" displayName="Sponsor" [valuesProvider]="sponsorValues" index="2">
+						<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+				</TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="status" displayName="Status" [valuesProvider]="statusValues" index="3">
+						<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+				</TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="budget" displayName="Budget" index="4"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="description" displayName="Description" index="5"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="score" hidden="true"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="_kmd" hidden="true" *ngIf="itemId"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="_id" hidden="true" *ngIf="itemId"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="_acl" hidden="true" *ngIf="itemId"></TKEntityProperty>
+			</RadDataForm>
             <Button [text]="buttonText" class="btn btn-primary" (tap)="addProject(item)"></Button>
 	    </StackLayout>
 	</ng-container>
