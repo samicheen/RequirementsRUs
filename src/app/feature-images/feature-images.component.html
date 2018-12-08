@@ -1,0 +1,12 @@
+<ActionBar title="Images">
+</ActionBar>
+<StackLayout>
+    <ScrollView orientation="vertical" height="600">
+        <StackLayout>
+            <StackLayout *ngFor="let imageObj of imageObjs">
+                    <Image [src]="imageObj.url" width="250" height="250" stretch="fill" (tap)="editImage(imageObj)"></Image>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+    <Button text="Add Image" class="btn btn-primary" (tap)="addImage()"></Button>
+</StackLayout>

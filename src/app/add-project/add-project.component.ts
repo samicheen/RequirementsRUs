@@ -53,7 +53,7 @@ export class AddProjectComponent implements OnInit {
   
         this.item = null;
         Kinvey.DataStore.collection("projects").save(item)
-          .then(() => this.routerExtensions.navigate(['/home'], { clearHistory: true }));
+          .then(() => this.routerExtensions.back());
       });
   }
 

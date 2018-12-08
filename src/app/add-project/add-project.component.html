@@ -2,13 +2,6 @@
 </ActionBar>
 <GridLayout>
 	<ng-container *ngIf="item | async as item; else loading">
-			<!-- name: "",
-			dueDate: "",
-			sponsor: "",
-			status: "",
-			budget: 0,
-			description: "",
-			score: 0 -->
 	    <StackLayout class="dataform">
 			<RadDataForm #formObject [source]="item">
 				<TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0"></TKEntityProperty>

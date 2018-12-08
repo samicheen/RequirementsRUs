@@ -3,10 +3,6 @@ import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { of } from "rxjs";
 import { Kinvey } from 'kinvey-nativescript-sdk';
-import * as fs from "tns-core-modules/file-system";
-import { path, knownFolders } from "tns-core-modules/file-system";
-import { ImageSource } from "tns-core-modules/image-source";
-import * as camera from "nativescript-camera";
 
 @Component({
   selector: 'ns-add-feature',
@@ -55,62 +51,14 @@ export class AddFeatureComponent implements OnInit {
     }
   }
 
-  addImage() {
-    const source = new ImageSource();
-    camera.requestPermissions();
-    camera.takePicture()
-        .then(function (imageAsset) {
-          source.fromAsset(imageAsset)
-          .then((imageSource: ImageSource) => {
-              const folderPath: string = knownFolders.documents().path;
-              const fileName = "test.png";
-              const filePath = path.join(folderPath, fileName);
-              console.log(filePath);
-              const saved: boolean = imageSource.saveToFile(filePath, "png");
-              if (saved) {
-                  console.log("Image saved successfully!");
-                  console.log("Result is an image asset instance");
-                  console.dir(imageAsset);
-                  
-                  console.log('Uploading image');
-                  console.log('exists: ' + fs.File.exists(filePath));
-
-                  var imageFile = fs.File.fromPath(filePath);
-                  console.dir(imageFile);
-                  var fileContent = imageFile.readSync();
-
-                  var metadataTrue = {
-                      filename: imageFile.name,
-                      mimeType: 'image/jpeg',
-                      size: fileContent.length,
-                      public: true
-                  }
-                  console.log(metadataTrue);
-                  Kinvey.Files.upload(imageFile, metadataTrue)
-                      .then(function (file) {
-                          console.log('File uploaded');
-                          console.log(JSON.stringify(file));
-                      })
-                      .catch(function (error) {
-                          console.log('Upload error: ' + error.message);
-                      });
-              }
-            });
-            
-        }).catch(function (err) {
-            console.log("Error -> " + err.message);
-        });
-  }
-
-  addFeature(item) {
-    this.radDataForm.dataForm.validateAll()
-      .then(result => {
-        if (!result) return;
-  
-        this.item = null;
-        Kinvey.DataStore.collection("features").save(item)
-          .then(() => this.routerExtensions.navigate(['/features', this.projectId]));
-      });
+  async addFeature(item) {
+    var result = await this.radDataForm.dataForm.validateAll();
+    if (!result) return;
+    this.item = null;
+    var feature = await Kinvey.DataStore.collection("features").save(item);
+    if(feature._id){
+        this.routerExtensions.back(); 
+    }
   }
 
 }

@@ -8,13 +8,18 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { FeaturesComponent } from "./features.component";
 import { AddFeatureComponent } from "../add-feature/add-feature.component";
 import { FeatureDetailsComponent } from "../feature-details/feature-details.component";
+import { FeatureImagesComponent } from '../feature-images/feature-images.component';
+import { FeatureEditImageComponent } from '../feature-edit-image/feature-edit-image.component';
+
 
 
 @NgModule({
   declarations: [
     FeaturesComponent,
     AddFeatureComponent,
-    FeatureDetailsComponent
+    FeatureDetailsComponent,
+    FeatureImagesComponent,
+    FeatureEditImageComponent
   ],
   imports: [
     NativeScriptModule,

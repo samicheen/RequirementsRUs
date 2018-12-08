@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Kinvey } from 'kinvey-nativescript-sdk';
 import { RouterExtensions } from "nativescript-angular/router";
 import { ListViewEventData } from "nativescript-ui-listview";
+import {Page} from "ui/page";
 
 @Component({
     selector: "Home",
@@ -11,25 +12,36 @@ import { ListViewEventData } from "nativescript-ui-listview";
 
 export class HomeComponent implements OnInit {
     public projects: Array<any> = [];
-    constructor(private routerExtensions: RouterExtensions) {
+    constructor(private routerExtensions: RouterExtensions, private page: Page) {
+        this.page.on(Page.navigatingToEvent, () => {
+          this.onLoad();
+        });
         // Use the component constructor to inject providers.
     }
-    ngOnInit(): void {
+
+    ngOnInit() {
+        this.onLoad();
+    }
+
+    onLoad() {
         // Init your component properties here.
         var dataStore = Kinvey.DataStore.collection('projects', Kinvey.DataStoreType.Network);
-        dataStore.find().subscribe(projects => {
+        var query = new Kinvey.Query();
+        query.descending('score');
+        dataStore.find(query).subscribe(projects => {
             this.projects = projects;
         });
     }
+
     addNewProject() {
         this.routerExtensions.navigate(["/add-project"]);
     }
-    public onItemTap(args: ListViewEventData) {
+
+    onItemTap(args: ListViewEventData) {
     	const item = args.view.bindingContext;
     	this.routerExtensions.navigate(
     		["/project-details", item._id]
-    	);
-    	
+    	);	
     }
     
 }

@@ -6,10 +6,12 @@ import { NativeScriptUIDataFormModule } from "nativescript-ui-dataform/angular";
 import { PropertyRoutingModule } from "./property-routing.module";
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { PropertiesComponent } from './properties.component';
+import { AddPropertyComponent } from '../add-property/add-property.component';
 
 @NgModule({
   declarations: [
-    PropertiesComponent
+    PropertiesComponent,
+    AddPropertyComponent
   ],
   imports: [
     // NativeScriptModule,

@@ -5,7 +5,7 @@
 			<Label fontsize="25" col="0" text="Feature Details"></Label>
 			<Button text="Edit Feature" horizontalAlignment="right" col="1" fontsize="15" (tap)="editFeatureTapped(item._id)" class="btn btn-primary"></Button>
 		</GridLayout>
-		<StackLayout row ="3" class="form">
+		<StackLayout row ="3" class="form" >
 			<StackLayout orientation="horizontal">
 				<Label text="Feature Name: "></Label>
 				<Label text="{{ item.name }}"></Label>
@@ -30,6 +30,7 @@
 				<Label text="Description: "></Label>
 				<Label text="{{ item.description }}"></Label>
 			</StackLayout>
+			<Button text="Show images" class="btn btn-primary" (tap)="onImgButtonTap(item._id)"></Button>
 			<Button text="Show parameters" class="btn btn-primary" (tap)="onButtonTap(item._id)"></Button>
 		</StackLayout>
 	</GridLayout>

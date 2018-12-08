@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Kinvey } from 'kinvey-nativescript-sdk';
 import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
-import { ListViewEventData } from "nativescript-ui-listview";
+import {Page} from "ui/page";
+import { alert } from "ui/dialogs/dialogs";
 
 @Component({
   selector: 'ns-properties',
@@ -10,26 +11,35 @@ import { ListViewEventData } from "nativescript-ui-listview";
   styleUrls: ['./properties.component.css'],
   moduleId: module.id,
 })
-export class PropertiesComponent implements OnInit {
+
+export class PropertiesComponent {
   public properties: Array<any> = [];
   public featureId: string;
-  constructor(private routerExtensions: RouterExtensions, private activatedRoute: ActivatedRoute) {
-      // Use the component constructor to inject providers.
+  constructor(private routerExtensions: RouterExtensions, 
+    private activatedRoute: ActivatedRoute, private page: Page) {
+    this.page.on(Page.navigatingToEvent, () => {
+      this.onLoad();
+    });
   }
-  ngOnInit(): void {
+
+
+  onLoad() {
       // Init your component properties here.
       this.featureId = this.activatedRoute.snapshot.params.id;
       console.log(this.featureId);
       var dataStore = Kinvey.DataStore.collection('properties', Kinvey.DataStoreType.Network);
       var query = new Kinvey.Query();
       query.equalTo('featureId', this.featureId);
+      query.ascending('name');
       dataStore.find(query).subscribe(properties => {
           this.properties = properties;
       });
   }
 
+  
+
   addNewProperty() {
-      this.routerExtensions.navigate(["/add-property"]);
+      this.routerExtensions.navigate(["add-property", this.featureId]);
   }
   
   async saveProperties(properties){
@@ -65,7 +75,16 @@ export class PropertiesComponent implements OnInit {
       var projectDataStore = Kinvey.DataStore.collection<any>('projects', Kinvey.DataStoreType.Network);
       var project = await projectDataStore.findById(projectId).toPromise();
       project.score =  totalProjectScore;
-      await projectDataStore.save(project);
+      projectDataStore.save(project).then(() => this.alert("Parameters saved successfully"));
+
+  }
+
+  private alert(message: string) {
+    return alert({
+      title: "",
+      okButtonText: "OK",
+      message: message
+    });
   }
 
 }

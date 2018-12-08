@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Kinvey } from 'kinvey-nativescript-sdk';
 import { RouterExtensions } from "nativescript-angular/router";
+import {Page} from "ui/page";
 
 @Component({
   selector: 'ns-project-details',
@@ -9,15 +10,18 @@ import { RouterExtensions } from "nativescript-angular/router";
   styleUrls: ['./project-details.component.css'],
   moduleId: module.id,
 })
-export class ProjectDetailsComponent implements OnInit {
+export class ProjectDetailsComponent {
 
   public item: any;
 
   constructor(private routerExtensions: RouterExtensions,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute, private page: Page) {
+                this.page.on(Page.navigatingToEvent, () => {
+                  this.onLoad();
+                });
   }
 
-  ngOnInit(): void {
+  onLoad() {
     this.item = Kinvey.DataStore.collection("projects", Kinvey.DataStoreType.Network)
     .findById(this.activatedRoute.snapshot.params.id).toPromise();
   }

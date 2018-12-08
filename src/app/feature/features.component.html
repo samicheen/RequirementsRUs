@@ -7,7 +7,7 @@
         </GridLayout>
         <ScrollView row="2" orientation="vertical">
             <StackLayout class="page-inner">
-                <GridLayout columns="*, auto, auto" rows="*" class="table table-standings">
+                <GridLayout *ngIf="features.length !== 0" columns="*, auto, auto" rows="*" class="table table-standings">
                     <Label text="Name" row="0" col="0" class="th"></Label>
                     <Label text="Status" row="0" col="1" class="th"></Label>
                     <Label text="Score" row="0" col="2" class="th"></Label>
