@@ -71,8 +71,7 @@ export class FeatureDetailsComponent {
       }];
       
       properties.forEach(async function(property) {
-        var res = await Kinvey.DataStore.collection("properties").save(property);
-        console.log(res);
+        await Kinvey.DataStore.collection("properties").save(property);
       });
   }
 

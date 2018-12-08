@@ -35,7 +35,6 @@ export class AddPropertyComponent implements OnInit {
   }
 
   addProperty(item) {
-    console.log(item);
     this.radDataForm.dataForm.validateAll()
       .then(result => {
         if (!result) return;

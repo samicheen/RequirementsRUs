@@ -32,7 +32,6 @@ export class LoginComponent {
             this.router.navigate(['/home']);
         } catch (error) {
             this.alert('We could not find your account. You can sign up for a new account.');
-            console.log('error', error);
         }
     }
 

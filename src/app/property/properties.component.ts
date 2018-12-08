@@ -26,7 +26,6 @@ export class PropertiesComponent {
   onLoad() {
       // Init your component properties here.
       this.featureId = this.activatedRoute.snapshot.params.id;
-      console.log(this.featureId);
       var dataStore = Kinvey.DataStore.collection('properties', Kinvey.DataStoreType.Network);
       var query = new Kinvey.Query();
       query.equalTo('featureId', this.featureId);
@@ -71,7 +70,6 @@ export class PropertiesComponent {
             totalProjectScore += feature.score;
       });
 
-      console.log(totalProjectScore);
       var projectDataStore = Kinvey.DataStore.collection<any>('projects', Kinvey.DataStoreType.Network);
       var project = await projectDataStore.findById(projectId).toPromise();
       project.score =  totalProjectScore;

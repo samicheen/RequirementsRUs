@@ -32,11 +32,11 @@ export class RegisterComponent {
                 password: this.input.password
             });
             if(user){
-                this.alert('Your account was successfully created.');
+                // this.alert('Your account was successfully created.');
+                this.goBack();
             }
         } catch (error) {
             this.alert('Unfortunately we were unable to create your account.');
-            console.log('error', error);
         }
     }
 

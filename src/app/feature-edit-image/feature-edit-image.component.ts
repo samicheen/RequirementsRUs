@@ -22,7 +22,6 @@ export class FeatureEditImageComponent implements OnInit {
         Kinvey.Files.stream(this.imageId).then(file => {
             this.imageUrl = file._downloadURL;
         });
-        console.log(this.imageId);
     }
 
     deleteImage(){

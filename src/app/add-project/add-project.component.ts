@@ -46,7 +46,6 @@ export class AddProjectComponent implements OnInit {
   }
 
   addProject(item) {
-    console.log(item);
     this.radDataForm.dataForm.validateAll()
       .then(result => {
         if (!result) return;

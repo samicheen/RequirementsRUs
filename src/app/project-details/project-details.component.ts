@@ -27,7 +27,6 @@ export class ProjectDetailsComponent {
   }
 
   public editProjectTapped(itemId: string) {
-    console.log(itemId);
     this.routerExtensions.navigate(['add-project', itemId]);
   }
 

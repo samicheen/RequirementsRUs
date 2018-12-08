@@ -39,7 +39,6 @@ export class FeatureImagesComponent {
     });
     const imageObjs = await Promise.all(pArray);
     this.imageObjs = imageObjs;
-    console.log(this.imageObjs);
   }
 
   async addImage() {
@@ -56,7 +55,6 @@ export class FeatureImagesComponent {
     const folderPath: string = knownFolders.documents().path;
     const fileName = "test.png";
     const filePath = path.join(folderPath, fileName);
-    console.log(filePath);
     const saved: boolean = imageSource.saveToFile(filePath, "png");
     if (saved) {
         var imageFile = fs.File.fromPath(filePath);
@@ -69,7 +67,6 @@ export class FeatureImagesComponent {
         }
         var file = await Kinvey.Files.upload(imageFile, metadataTrue);
         var imageDataStore =  Kinvey.DataStore.collection<any>("featureImages", Kinvey.DataStoreType.Network);
-        console.log(JSON.stringify(file));
         var image = {
             featureId: this.featureId,
             imageId: file._id
