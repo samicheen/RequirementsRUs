@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
         this.page.on(Page.navigatingToEvent, () => {
           this.onLoad();
         });
-        // Use the component constructor to inject providers.
     }
 
     ngOnInit() {

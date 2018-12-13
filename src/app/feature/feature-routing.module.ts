@@ -8,7 +8,6 @@ import { FeatureImagesComponent } from "../feature-images/feature-images.compone
 import { FeatureEditImageComponent } from "../feature-edit-image/feature-edit-image.component";
 
 const routes: Routes = [
-    // { path: "", redirectTo: "features/:id" },
     { path: "features/:id", component: FeaturesComponent },
     { path: "add-feature/add/:projectId", component: AddFeatureComponent },
     { path: "add-feature/edit/:featureId", component: AddFeatureComponent },

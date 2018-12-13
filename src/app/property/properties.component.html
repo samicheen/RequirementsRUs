@@ -14,8 +14,8 @@
                         <Label col="0" textWrap="true" row="0" rowSpan="2" [text]="item.name" fontSize="16"></Label>
                         <TextField horizontalAlignment="center" width="40" col="1" row="0" class="input" [(ngModel)]="item.weight" fontSize="16"></TextField>
                         <Slider col="2" colSpan="3" row="0" value="10" minValue="0" maxValue="10" [(ngModel)]="item.score"></Slider>
-                        <Label col="2" row="1" [text]="item.low" fontSize="12"></Label>
-                        <Label col="4" row="1" [text]="item.high" fontSize="12" horizontalAlignment="right"></Label>
+                        <Label col="2" row="1" [text]="item.low" fontSize="11"></Label>
+                        <Label col="4" row="1" [text]="item.high" fontSize="11" horizontalAlignment="right"></Label>
                 </GridLayout>
             </StackLayout>
             <Button text="Add Parameter" class="btn btn-primary" (tap)="addNewProperty()"></Button>

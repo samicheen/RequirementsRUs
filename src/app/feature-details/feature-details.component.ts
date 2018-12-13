@@ -42,30 +42,30 @@ export class FeatureDetailsComponent {
     var properties = [{
         featureId: this.featureId,
         name: "Ease of Implementation",
-        low: "Easy",
-        high: "Challenging",
+        low: "Challenging",
+        high: "Easy",
         weight: 100,
         score: 0
       },
       {
         featureId: this.featureId,
         name: "Investment of Money",
-        low: "Cheap",
-        high: "Expensive",
+        low: "Expensive",
+        high: "Cheap",
         weight: 100,
         score: 0
       },{
         featureId: this.featureId,
         name: "Brand Fit",
-        low: "Erode",
+        low: "Erodes",
         high: "Strengthen",
         weight: 100,
         score: 0
       },{
         featureId: this.featureId,
         name: "Investment of Time/Training",
-        low: "Low",
-        high: "High",
+        low: "High",
+        high: "Low",
         weight: 100,
         score: 0
       }];
