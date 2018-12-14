@@ -3,6 +3,10 @@ import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { of } from "rxjs";
 import { Kinvey } from 'kinvey-nativescript-sdk';
+import * as geolocation from "nativescript-geolocation";
+import { getCurrentLocation } from 'nativescript-geolocation';
+import { Accuracy } from "tns-core-modules/ui/enums";
+import { alert } from "ui/dialogs/dialogs";
 
 @Component({
   selector: 'ns-add-feature',
@@ -36,7 +40,8 @@ export class AddFeatureComponent implements OnInit {
       estimatedPrice: "",
       description: "",
       score: 0,
-      projectId: ""
+      projectId: "",
+      location: new Object()
     };
 
     emptyItem.projectId = this.projectId;
@@ -56,9 +61,32 @@ export class AddFeatureComponent implements OnInit {
     if (!result) return;
     this.item = null;
     var feature = await Kinvey.DataStore.collection("features").save(item);
-    if(feature._id){
+    if(feature){
         this.routerExtensions.back(); 
     }
   }
 
+  async addLocation(item){
+    var isEnabled = await geolocation.isEnabled();
+    if (!isEnabled) {
+        geolocation.enableLocationRequest();
+    }
+    var location = await getCurrentLocation({desiredAccuracy: Accuracy.high, timeout: 20000});
+    if(location){
+      item.location.latitude = location.latitude;
+      item.location.longitude = location.longitude;
+      if(this.buttonText === "Add")
+        this.alert("Location added successfully");
+      else
+        this.alert("Location updated successfully");
+    }
+  }
+
+  private alert(message: string) {
+    return alert({
+      title: "",
+      okButtonText: "OK",
+      message: message
+    });
+  }
 }

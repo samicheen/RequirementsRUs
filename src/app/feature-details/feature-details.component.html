@@ -30,6 +30,14 @@
 				<Label text="Description: "></Label>
 				<Label text="{{ item.description }}"></Label>
 			</StackLayout>
+			<StackLayout orientation="horizontal">
+				<Label text="Latitude: "></Label>
+				<Label text="{{ item.location.latitude }}"></Label>
+			</StackLayout>
+			<StackLayout orientation="horizontal">
+				<Label text="Longitude: "></Label>
+				<Label text="{{ item.location.longitude }}"></Label>
+			</StackLayout>
 			<Button text="Show images" class="btn btn-primary" (tap)="onImgButtonTap(item._id)"></Button>
 			<Button text="Show parameters" class="btn btn-primary" (tap)="onButtonTap(item._id)"></Button>
 		</StackLayout>

@@ -4,24 +4,33 @@
 	<ng-container *ngIf="item | async as item; else loading">
 	    <StackLayout class="dataform">
             <RadDataForm #featureFormObject [source]="item">
-				<TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0">
+						<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Feature name can't be empty."></TKNonEmptyValidator>
+				</TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="dueDate" displayName="Due Date" index="1">
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Due date can't be empty."></TKNonEmptyValidator>
 					<TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
 				</TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="priority" displayName="Priority" [valuesProvider]="priorityValues" index="2">
-						<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Priority can't be empty."></TKNonEmptyValidator>
+					<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
 				</TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="status" displayName="Status" [valuesProvider]="statusValues" index="3">
-						<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Status can't be empty."></TKNonEmptyValidator>
+					<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
 				</TKEntityProperty>
-				<TKEntityProperty tkDataFormProperty name="estimatedPrice" displayName="Estimated Price" index="4"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="estimatedPrice" displayName="Estimated Price" index="4">
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Estimated price can't be empty."></TKNonEmptyValidator>
+				</TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="description" displayName="Description" index="5"></TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="score" hidden="true"></TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="projectId" hidden="true"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="location" hidden="true"></TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="_kmd" hidden="true" *ngIf="featureId"></TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="_id" hidden="true" *ngIf="featureId"></TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="_acl" hidden="true" *ngIf="featureId"></TKEntityProperty>
 			</RadDataForm>
+			<Button text="{{buttonText}} Location" class="btn btn-primary" (tap)="addLocation(item)"></Button>
 			<Button [text]="buttonText" class="btn btn-primary" (tap)="addFeature(item)"></Button>
 	    </StackLayout>
 	</ng-container>

@@ -4,17 +4,24 @@
 	<ng-container *ngIf="item | async as item; else loading">
 	    <StackLayout class="dataform">
 			<RadDataForm #formObject [source]="item">
-				<TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0">
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Project name can't be empty."></TKNonEmptyValidator>
+				</TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="dueDate" displayName="Due Date" index="1">
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Due date can't be empty."></TKNonEmptyValidator>
 					<TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
 				</TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="sponsor" displayName="Sponsor" [valuesProvider]="sponsorValues" index="2">
-						<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Sponsor can't be empty."></TKNonEmptyValidator>
+					<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
 				</TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="status" displayName="Status" [valuesProvider]="statusValues" index="3">
-						<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Status can't be empty."></TKNonEmptyValidator>
+					<TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
 				</TKEntityProperty>
-				<TKEntityProperty tkDataFormProperty name="budget" displayName="Budget" index="4"></TKEntityProperty>
+				<TKEntityProperty tkDataFormProperty name="budget" displayName="Budget" index="4">
+					<TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Budget can't be empty."></TKNonEmptyValidator>
+				</TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="description" displayName="Description" index="5"></TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="score" hidden="true"></TKEntityProperty>
 				<TKEntityProperty tkDataFormProperty name="_kmd" hidden="true" *ngIf="itemId"></TKEntityProperty>
