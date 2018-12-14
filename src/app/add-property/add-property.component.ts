@@ -27,7 +27,7 @@ export class AddPropertyComponent implements OnInit {
       name: "",
       low: "",
       high: "",
-      weight: 0,
+      weight: 100,
       score: 0
     };
     
