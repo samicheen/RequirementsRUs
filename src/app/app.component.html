@@ -1,1 +1,15 @@
-<page-router-outlet></page-router-outlet>
+<RadSideDrawer [gesturesEnabled]="user !== null">
+    <StackLayout tkDrawerContent *ngIf="user && user.email" class="sideStackLayout">
+        <StackLayout class="sideTitleStackLayout">
+            <Label text="User Details" style="font-weight: bold"></Label>
+        </StackLayout>
+        <StackLayout class="sideStackLayout">
+            <Label text="Welcome {{ user && user.username }}" verticalAlignment="center"></Label>
+            <Label text="Email: {{ user && user.email }}" verticalAlignment="center"></Label>
+            <Label text="Logout" color="lightgray" padding="10" style="text-align: center" (tap)="logout()"></Label>
+        </StackLayout>
+    </StackLayout>
+    <GridLayout tkMainContent>
+        <page-router-outlet></page-router-outlet>
+    </GridLayout>
+</RadSideDrawer>

@@ -40,6 +40,7 @@
 			</StackLayout>
 			<Button text="Show images" class="btn btn-primary" (tap)="onImgButtonTap(item._id)"></Button>
 			<Button text="Show parameters" class="btn btn-primary" (tap)="onButtonTap(item._id)"></Button>
+			<Button text="Delete Feature" class="btn btn-primary" (tap)="deleteFeature(item)"></Button>
 		</StackLayout>
 	</GridLayout>
 	<ng-template #loading>

@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
         // Init your component properties here.
         var dataStore = Kinvey.DataStore.collection('projects', Kinvey.DataStoreType.Network);
         var query = new Kinvey.Query();
+        query.equalTo("deleted", 0);
         query.descending('score');
         dataStore.find(query).subscribe(projects => {
             this.projects = projects;

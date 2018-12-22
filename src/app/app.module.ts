@@ -9,6 +9,7 @@ import { FeatureModule } from "./feature/feature.module";
 import { HomeModule } from "./home/home.module";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { NativeScriptUIDataFormModule } from "nativescript-ui-dataform/angular";
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { PropertyModule } from "./property/property.module";
 
 @NgModule({
@@ -21,9 +22,10 @@ import { PropertyModule } from "./property/property.module";
         AppRoutingModule,
         NativeScriptUIListViewModule,
         NativeScriptUIDataFormModule,
+        NativeScriptUISideDrawerModule,
         HomeModule,
         FeatureModule,
-        PropertyModule
+        PropertyModule,
     ],
     declarations: [
         AppComponent,

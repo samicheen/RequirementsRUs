@@ -27,6 +27,7 @@ export class FeaturesComponent {
       var dataStore = Kinvey.DataStore.collection('features', Kinvey.DataStoreType.Network);
       var query = new Kinvey.Query();
       query.equalTo('projectId', this.projectId);
+      query.equalTo("deleted", 0);
       query.descending('score');
       dataStore.find(query).subscribe(features => {
           this.features = features;

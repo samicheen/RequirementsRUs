@@ -31,6 +31,7 @@
 				<Label text="{{ item.description }}"></Label>
 			</StackLayout>
 			<Button text="Show features" class="btn btn-primary" (tap)="onButtonTap(item._id)"></Button>
+			<Button text="Delete Project" class="btn btn-primary" (tap)="deleteProject(item)"></Button>
 		</StackLayout>
 	</GridLayout>
 	<ng-template #loading>

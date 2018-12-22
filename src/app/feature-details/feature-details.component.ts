@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Kinvey } from 'kinvey-nativescript-sdk';
 import { RouterExtensions } from "nativescript-angular/router";
 import {Page} from "ui/page";
+import { confirm } from 'tns-core-modules/ui/dialogs';
 
 @Component({
   selector: 'ns-feature-details',
@@ -85,6 +86,20 @@ export class FeatureDetailsComponent {
 
   onImgButtonTap(featureId: string): void {
     this.routerExtensions.navigate(['feature-images', featureId]);
+  }
+
+  async deleteFeature(item) {
+    var dataStore = Kinvey.DataStore.collection('features', Kinvey.DataStoreType.Network);
+    var options = {
+      message: "Are you sure you want to delete this feature?",
+      okButtonText: "Ok",
+      cancelButtonText: "Cancel"
+    };
+    var result = await confirm(options);
+    if(result){
+      item.deleted = 1;
+      dataStore.save(item).then(() => this.routerExtensions.back());
+    }
   }
 
 }
